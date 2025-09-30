@@ -1,33 +1,29 @@
 import 'dart:io';
 
 void main() {
-
   stdout.write("정수를 입력하세요: ");
-  String? input = stdin.readLineSync();
+  int n = int.parse(stdin.readLineSync()!);
 
-  if (input == null || input.isEmpty) {
-    print("입력이 올바르지 않습니다.");
-    return;
-  }
-
-  int number = int.parse(input);
-
-  if (number < 0) {
-    print("$number -> $number");
-    return;
-  }
-
-  String numStr = number.toString();
-  List<String> digits = numStr.split('');
-
-  int sum = digits.map(int.parse).reduce((a, b) => a + b);
-
-  if (digits.length == 1) {
-    print("$number -> $number");
+  if (n < 0) {
+    print("$n");
+  } else if (n == 0) {
+    print("0");
   } else {
-    String expression = digits.join("+");
-    print("$number -> $expression = $sum");
+    int temp = n;
+    List<int> digits = [];
+
+    while (temp > 0) {
+      digits.add(temp % 10);
+      temp ~/= 10;
+    }
+    digits = digits.reversed.toList();
+
+    int sum = digits.reduce((a, b) => a + b);
+
+    String expr = digits.join("+");
+    print("$expr=$sum");
   }
 }
+
 
 

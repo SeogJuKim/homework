@@ -25,6 +25,7 @@ void main() {
     a.name = AsciiDecoder().convert([65 + i]);
     aList.add(a);
   }
+<<<<<<< HEAD
 
   String strTable = '이름 국어 영어 수학 평균';
   print(strTable);
@@ -60,3 +61,7 @@ void main() {
     }
   }
 }
+=======
+}
+
+>>>>>>> 70158714887f6167bc90676b2d7ef46c09f45580

@@ -1,67 +1,30 @@
-import 'dart:convert';
-import 'dart:math';
-
-class Student {
-  String name = '';
-  int kor = 0;
-  int eng = 0;
-  int math = 0;
-  double avg = 0.0;
-
-  Student() {
-    kor = Random().nextInt(99) + 1;
-    eng = Random().nextInt(99) + 1;
-    math = Random().nextInt(99) + 1;
-  }
-
-  void setAvg() => avg = (kor + eng + math) / 3.0;
-}
+import 'dart:io';
 
 void main() {
-  var aList = List.empty(growable: true);
+  stdout.write("정수를 입력하세요: ");
+  int n = int.parse(stdin.readLineSync()!);
 
-  for (int i = 0; i < 10; i++) {
-    Student a = Student();
-    a.name = AsciiDecoder().convert([65 + i]);
-    aList.add(a);
-  }
-<<<<<<< HEAD
+  if (n < 0) {
+    // 음수면 그대로 출력
+    print("$n");
+  } else if (n == 0) {
+    // 0이면 그대로 출력
+    print("0");
+  } else {
+    int temp = n;
+    List<int> digits = [];
 
-  String strTable = '이름 국어 영어 수학 평균';
-  print(strTable);
-  // print("이름, 국어, 영어, 수학, 평균");
-  for (int i = 0; i < 10; i++) {
-    aList[i].setAvg();
-    print(aList[i].name.padLeft(4) +
-        aList[i].kor.toString().padLeft(5) +
-        aList[i].eng.toString().padLeft(5) +
-        aList[i].math.toString().padLeft(5) +
-        aList[i].avg.toStringAsFixed(2).padLeft(5));
-  }
-
-  print("평균으로 정렬");
-  print(strTable + "  비고");
-
-  List newList = List.from(aList);
-  newList.sort((a, b) => a.avg.compareTo(b.avg));
-
-  for (var i in newList) {
-    String str = i.name.padLeft(4) +
-        i.kor.toString().padLeft(5) +
-        i.eng.toString().padLeft(5) +
-        i.math.toString().padLeft(5) +
-        i.avg.toStringAsFixed(2).padLeft(5);
-
-    if (i.avg >= 50.0) {
-      str += " PASS".padLeft(5);
-      print(str);
-    } else {
-      str += " FAIL".padLeft(5);
-      print(str);
+    // 각 자리수 분리 (역순으로 들어가므로 나중에 뒤집음)
+    while (temp > 0) {
+      digits.add(temp % 10);
+      temp ~/= 10;
     }
+    digits = digits.reversed.toList();
+
+    int sum = digits.reduce((a, b) => a + b);
+
+    // "1+2+3=6" 형태로 출력
+    String expr = digits.join("+");
+    print("$expr=$sum");
   }
 }
-=======
-}
-
->>>>>>> 70158714887f6167bc90676b2d7ef46c09f45580

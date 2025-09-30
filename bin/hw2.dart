@@ -49,13 +49,13 @@ void main() {
         i.kor.toString().padLeft(5) +
         i.eng.toString().padLeft(5) +
         i.math.toString().padLeft(5) +
-        i.avg.toStringAsFixed(2).padLeft(5);
+        i.avg.toStringAsFixed(2).padLeft(8);
 
-    if (i.avg >= 50.0) {
-      str += " PASS".padLeft(5);
+    if (i.avg > 50.0) {
+      str += "PASS".padLeft(5);
       print(str);
     } else {
-      str += " FAIL".padLeft(5);
+      str += "FAIL".padLeft(5);
       print(str);
     }
   }
